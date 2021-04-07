@@ -1,0 +1,91 @@
+---
+title: "Function Friday: Regular Expressions"
+output: html_document
+author: "Thy Nguyen, Alex Denzler, & Hayley Hadges"
+---
+```{r, echo = FALSE}
+library(stringr)
+```
+
+# Intro to Regular Expressions
+
+Regular expressions are specially encoded text strings used as patterns for matching sets of strings, making them a concise and flexible tool for string-searching algorithms with "find" or "find and replace" operations on strings. 
+
+Here are some real world regular expression applications:
+
+* Searching files in a directory using the command line
+* Checking for valid formatting (email address, phone number, date, etc)
+* Control F 
+* Parsing user input
+* Replacing specific text
+* Password pattern matching
+
+
+
+
+Here is a [RegEx Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf) with a lot of this information condensed.
+
+
+# Stringr Functions
+
+While there are other popular R functions used for dealing with regular expressions, like **grep()**, **regexpr()**, and **gsub()**, we're going to focus on the functions in the stringr package. 
+
+Function    |    Description
+---------------- | ----------------------
+**str_detect(string, pattern)**	| Detect the presence or absence of a pattern in a string, returns T/F.
+**str_locate(string, pattern)**	| Locate the first position of a pattern and return a matrix with start and end.
+**str_extract(string, pattern)** |	Extracts text corresponding to the first match.
+**str_match(string, pattern)**	| Extracts capture groups formed by () from the first match.
+**str_split(string, pattern)** |	Splits string into pieces and returns a list of character vectors.
+**str_replace(string, pattern, replacement)**	 | Replaces the first matched pattern and returns a character vector.
+
+# Basic Function Examples
+
+#### **str_detect**
+```{r}
+month <- c("april", "April", "APRIL")
+str_detect(month, "April")
+
+months  <- c("March", "April", "May", "June", "July", "August")
+str_detect(months, "a")
+```
+
+#### **str_locate()**
+```{r}
+
+```
+
+#### **str_extract**
+```{r}
+x <- c("apple", "banana", "pear")
+str_extract(x, "an")
+```
+
+#### **str_match()**
+```{r}
+
+```
+
+#### **str_split()**
+```{r}
+
+```
+
+#### **str_replace()**
+```{r}
+
+```
+
+
+
+## Escape Characters
+
+## Meta Characters
+
+## Character Classes
+
+## Quantifiers
+
+## Anchors
+
+# Problem Set
