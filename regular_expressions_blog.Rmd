@@ -28,16 +28,16 @@ Here is a [RegEx Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/09/
 
 # Stringr Functions
 
-While there are other popular R functions used for dealing with regular expressions, like **grep()**, **regexpr()**, and **gsub()**, we're going to focus on the functions in the stringr package. 
+While there are other popular R functions used for dealing with regular expressions, like `grep()`, `regexpr()`, and `gsub()`, we're going to focus on the functions in the `stringr` package. 
 
 Function    |    Description
 ---------------- | ----------------------
-**str_detect(string, pattern)**	| Detect the presence or absence of a pattern in a string, returns T/F.
-**str_locate(string, pattern)**	| Locate the first position of a pattern and return a matrix with start and end.
-**str_extract(string, pattern)** |	Extracts text corresponding to the first match.
-**str_match(string, pattern)**	| Extracts capture groups formed by () from the first match.
-**str_split(string, pattern)** |	Splits string into pieces and returns a list of character vectors.
-**str_replace(string, pattern, replacement)**	 | Replaces the first matched pattern and returns a character vector.
+`str_detect(string, pattern)`	| Detect the presence or absence of a pattern in a string, returns T/F.
+`str_locate(string, pattern)`	| Locate the first position of a pattern and return a matrix with start and end.
+`str_extract(string, pattern)` |	Extracts text corresponding to the first match, returns a vector.
+`str_match(string, pattern)`	| Extracts capture groups formed by () from the first match.
+`str_split(string, pattern)` |	Splits string into pieces and returns a list of character vectors.
+`str_replace(string, pattern, replacement)`	 | Replaces the first matched pattern and returns a character vector.
 
 # Basic Function Examples
 
@@ -87,5 +87,27 @@ str_extract(x, "an")
 ## Quantifiers
 
 ## Anchors
+
+As the default, regular expressions will match any part of a string. Anchors, on the other hand, do not match any character at all. Instead can anchor matches from the start or end of the given string.
+
+
+`^` matches the start of the string.
+
+`$`	matches the end of the string.
+
+
+```{r}
+x <- c("apple", "banana", "pear")
+str_extract(x, "^a")
+
+x <- c("apple pie", "apple", "apple cake")
+str_extract(x, "apple$")
+
+text = "the quick brown fox jumps over the lazy dog"
+str_replace(text,"^the","---")
+```
+
+
+
 
 # Problem Set

@@ -186,7 +186,7 @@ pre code {
 </div>
 <div id="stringr-functions" class="section level1">
 <h1>Stringr Functions</h1>
-<p>While there are other popular R functions used for dealing with regular expressions, like <strong>grep()</strong>, <strong>regexpr()</strong>, and <strong>gsub()</strong>, we’re going to focus on the functions in the stringr package.</p>
+<p>While there are other popular R functions used for dealing with regular expressions, like <strong>grep()</strong>, <strong>regexpr()</strong>, and <strong>gsub()</strong>, we’re going to focus on the functions in the <code>stringr</code> package.</p>
 <table>
 <colgroup>
 <col width="42%" />
@@ -200,32 +200,28 @@ pre code {
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>str_detect(string, pattern)</strong></td>
+<td><code>str_detect(string, pattern)</code></td>
 <td>Detect the presence or absence of a pattern in a string, returns T/F.</td>
 </tr>
 <tr class="even">
-<td><strong>str_locate(string, pattern)</strong></td>
+<td><code>str_locate(string, pattern)</code></td>
 <td>Locate the first position of a pattern and return a matrix with start and end.</td>
 </tr>
 <tr class="odd">
-<td><strong>str_extract(string, pattern)</strong></td>
-<td>Extracts text corresponding to the first match.</td>
+<td><code>str_extract(string, pattern)</code></td>
+<td>Extracts text corresponding to the first match, returns a vector.</td>
 </tr>
 <tr class="even">
-<td><strong>str_match(string, pattern)</strong></td>
+<td><code>str_match(string, pattern)</code></td>
 <td>Extracts capture groups formed by () from the first match.</td>
 </tr>
 <tr class="odd">
-<td><strong>str_split(string, pattern)</strong></td>
+<td><code>str_split(string, pattern)</code></td>
 <td>Splits string into pieces and returns a list of character vectors.</td>
 </tr>
 <tr class="even">
-<td><strong>str_replace(string, pattern, replacement)</strong></td>
+<td><code>str_replace(string, pattern, replacement)</code></td>
 <td>Replaces the first matched pattern and returns a character vector.</td>
-</tr>
-<tr class="odd">
-<td><strong>str_subset(string, pattern)</strong></td>
-<td>Keep strings matching a pattern, or find positions.</td>
 </tr>
 </tbody>
 </table>
@@ -259,9 +255,6 @@ str_extract(x, &quot;an&quot;)</code></pre>
 <div id="str_replace" class="section level4">
 <h4><strong>str_replace()</strong></h4>
 </div>
-<div id="str_subset" class="section level4">
-<h4><strong>str_subset()</strong></h4>
-</div>
 <div id="escape-characters" class="section level2">
 <h2>Escape Characters</h2>
 </div>
@@ -276,6 +269,18 @@ str_extract(x, &quot;an&quot;)</code></pre>
 </div>
 <div id="anchors" class="section level2">
 <h2>Anchors</h2>
+<p>As the default, regular expressions will match any part of a string. Anchors, on the other hand, do not match any character at all. Instead can anchor matches from the start or end of the given string.</p>
+<p><code>^</code> matches the start of the string.</p>
+<p><code>$</code> matches the end of the string.</p>
+<pre class="r"><code>x &lt;- c(&quot;apple&quot;, &quot;banana&quot;, &quot;pear&quot;)
+str_extract(x, &quot;^a&quot;)</code></pre>
+<pre><code>## [1] &quot;a&quot; NA  NA</code></pre>
+<pre class="r"><code>x &lt;- c(&quot;apple pie&quot;, &quot;apple&quot;, &quot;apple cake&quot;)
+str_extract(x, &quot;apple$&quot;)</code></pre>
+<pre><code>## [1] NA      &quot;apple&quot; NA</code></pre>
+<pre class="r"><code>text = &quot;the quick brown fox jumps over the lazy dog&quot;
+str_replace(text,&quot;^the&quot;,&quot;---&quot;)</code></pre>
+<pre><code>## [1] &quot;--- quick brown fox jumps over the lazy dog&quot;</code></pre>
 </div>
 </div>
 <div id="problem-set" class="section level1">
