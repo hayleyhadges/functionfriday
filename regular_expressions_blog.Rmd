@@ -110,10 +110,52 @@ Character        |    Description
 
 These can all be combined. For example, "`Tr.*`" matches "`Tr`", "`Tree`", "`Triumph`", "`Tragedy`", etc.
 
-
 ## Character Classes
 
+A character class is a set of characters enclosed in the square brackets []. A match is found when a character in the set is detected in the input. Some common character classes are:
+
+Characters        |    Description
+----------------- | ----------------------
+`[abc]` | Matches any of the following characters `a`, `b`, or `c`. `gr[ae]y` matches `grey` and `gray`, and `[aeiou]` matches a lower case vowel while `[AEIOU]` matches an upper case vowel.
+`[a-z]` | Matches a character in the alphabet (lower case), inclusive of `a` and `z`. 
+`[0-9]` | Matches any digit from `0` to `9`, inclusive. `[4-9]th` matches `4th`, `5th`, `6th`, etc. but not `1th`, `2th` or `3th`.
+`[a-zA-Z0-9]` | Matches any alphabetic character (lower or upper case) or single digit.
+`[^...]` | Matches anything other than the specified characters. 
+
+Character classes can be and are often used in conjunction with quantifiers and anchors (see below) to make regular expressions more flexible.
+
 ## Quantifiers
+
+Quantifiers are the shortest to type, but they exercise immense power as they match the number of instances of a meta character, group, or character class in the input. If you want to repeat something in a regular expression, you can add a quantifier after it to specify how many times it can or should be repeated. The most common quantifiers are:
+
+Quantifier        |    Description
+---------------- | ----------------------
+`*`	| Matches the preceding character 0 or more times. 
+`+` | Matches the preceding character 1 or more times.
+`?` | Matches the preceding character 1 or 0 times.
+`{n}` | Matches the preceding character exactly n times.
+`{n,}` | Matches the preceding character n or more times.
+`{,n}` | Matches the preceding character at most n times.
+`{n,m}` | Matches the preceding character at least n times but no more than m times.
+
+The first three quantifiers are meta characters and are actually shorthands for the range quantifiers `{ }` listed below. The last quantifier, `{n,m}`, encompasses all of the above and understanding how it works is key to understanding the rest. This quantifier matches the preceding character (or group) n to m times. For example, a regular expression that can match the words "traveler" or "traveller" is "`travel{1,2}er`". `{,n}` is equivalent to `{0,n}` and `{n,}` is equivalent to `{n,Inf}`. When no comma is present as in the case of `{n}`, the pattern is matched exactly n times.
+
+Thus, we can rewrite the first three quantifiers as:
+
+Quantifier        | Normalized as range
+---------------- | ----------------------
+`*` | `{0,Inf}`
+`+` | `{1,Inf}`
+`?` | `{0,1}`
+
+Some examples for the remaining quantifiers are:
+
+Quantifier        |    Example
+---------------- | ----------------------
+`{n}` | "`Hel{2}o`" matches "`Hello`" but not "`Helo`", "`Heo`", "`Helllo`", etc.
+`{n,}` | "`Sh{2,}`" matches "`Shh`", "`Shhh`", "`Shhhh`", etc. but not "`Sh`".
+`{,n}` | "`\d{,4}`" matches numbers up to 4 digits and no numbers at all. Example matches are "" (empty string), "`8`", "`12`", "`694`", and "`2021`".
+`{n,m}` | "`An{1,2}a`" matches only "`Ana`" and "`Anna`".
 
 ## Anchors
 
