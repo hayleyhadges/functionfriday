@@ -441,6 +441,14 @@ str_extract(x, &quot;an&quot;)</code></pre>
 </div>
 <div id="escape-characters" class="section level2">
 <h2>Escape Characters</h2>
+<p>Because of the way that regular expressions are written, there is a specific way to look for characters such as <code>.</code>, <code>\</code>, <code>-</code>, and <code>?</code>, among others. There are specific ways to do this, using something called an escape character. An escape character tells the regular expression that you want to match the expression itself, not the behavior. In order to search for a literal <code>.</code>, your statement will look like this: <code>\.</code>. In this lies one issue. If you want to find a literal <code>\</code>, you must first escape it, creating the regular expression <code>\\</code>. In order to write the full expression, you must identify it is a string by opening and closing the expression using <code>\</code>. So to match <code>\</code>, your regular expression will look like this: <code>\\\\</code>. Here are some examples:</p>
+<pre class="r"><code>x &lt;- c(&quot;w.x.y.z&quot;, &quot;wt[x&quot;)
+
+str_detect(x, &quot;wt\\[x&quot;)</code></pre>
+<pre><code>## [1] FALSE  TRUE</code></pre>
+<pre class="r"><code>str_detect(x, &quot;w\\.x\\.y\\.z&quot;)</code></pre>
+<pre><code>## [1]  TRUE FALSE</code></pre>
+<p>Here, we had to use an escape to identify the “<code>[</code>” and the “<code>.</code>”, as they are outside of the character class.</p>
 </div>
 <div id="meta-characters" class="section level2">
 <h2>Meta Characters</h2>

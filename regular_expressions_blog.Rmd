@@ -80,7 +80,19 @@ str_extract(x, "an")
 
 ## Escape Characters
 
+Because of the way that regular expressions are written, there is a specific way to look for characters such as `.`, `\`, `-`, and `?`, among others. There are specific ways to do this, using something called an escape character. An escape character tells the regular expression that you want to match the expression itself, not the behavior. In order to search for a literal `.`, your statement will look like this: `\.`. In this lies one issue. If you want to find a literal `\`, you must first escape it, creating the regular expression `\\`. In order to write the full expression, you must identify it is a string by opening and closing the expression using `\`. So to match `\`, your regular expression will look like this: `\\\\`. Here are some examples:
+
+```{r}
+x <- c("w.x.y.z", "wt[x")
+
+str_detect(x, "wt\\[x")
+str_detect(x, "w\\.x\\.y\\.z")
+```
+
+Here, we had to use an escape to identify the "`[`" and the "`.`", as they are outside of the character class.
+
 ## Meta Characters
+
 
 ## Character Classes
 
