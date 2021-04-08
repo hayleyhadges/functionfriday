@@ -9,7 +9,7 @@ library(stringr)
 
 # Intro to Regular Expressions
 
-Regular expressions are specially encoded text strings used as patterns for matching sets of strings, making them a concise and flexible tool for string-searching algorithms with "find" or "find and replace" operations on strings. 
+Regular expressions are specially encoded text strings used as patterns for matching sets of strings, making them a concise and flexible tool for string-searching algorithms with "find" or "find and replace" operations on strings. Regular expressions may seem extremely complicated at first, however they can be used to save large amounts of time parsing through large text files. Regular expressions allow us to search for specific patterns within text, and we are even able to specify how many times we want to look for the pattern. Regular expressions are especially useful because they are able to be used across all mediums and coding languages.
 
 Here are some real world regular expression applications:
 
@@ -80,7 +80,35 @@ str_extract(x, "an")
 
 ## Escape Characters
 
+Because of the way that regular expressions are written, there is a specific way to look for characters such as `.`, `\`, `-`, and `?`, among others. There are specific ways to do this, using something called an escape character. An escape character tells the regular expression that you want to match the expression itself, not the behavior. In order to search for a literal `.`, your statement will look like this: `\.`. In this lies one issue. If you want to find a literal `\`, you must first escape it, creating the regular expression `\\`. In order to write the full expression, you must identify it is a string by opening and closing the expression using `\`. So to match `\`, your regular expression will look like this: `\\\\`. Here are some examples:
+
+```{r}
+x <- c("w.x.y.z", "wt[x")
+
+str_detect(x, "wt\\[x")
+str_detect(x, "w\\.x\\.y\\.z")
+```
+
+Here, we had to use an escape to identify the "`[`" and the "`.`", as they are outside of the character class.
+
 ## Meta Characters
+
+Meta characters are the building blocks of regular expressions, as they allow for the regular expression to be written more concisely, specify character types, use ranges, and either specify or generalize what a regular expression is looking for. Below are examples of the commonly used meta characters.
+
+Character        |    Description
+---------------- | ----------------------
+`*`	| Matches the preceding character 0 or more times. "`Be*`" matches "`B`", "`Be`", "`Bee`", "`Beee`", etc.
+`+` | Matches the preceding character 1 or more times. "`Ze+`" matches "`Ze`", "`Zee`", "`Zeee`", etc.
+`.` | Matches any alphanumeric or symbol. "`Da.`" matches "`Dab`", "`Da9`", "`Da@`", etc.
+`?` | Matches the preceding character 1 or 0 times. "`To?n`" matches "`Ton`" or "`Tn`". 
+`(...)` | Matches the characters or numbers in the exact order. "`Form(ula)`" matches "`Formula`" but not "`Formlau`". "`Form(123)`" matches "`Form123`" but not "`Form456`". 
+`[...]` | Matches one of the characters or numbers. "`Alph[aeo]`" matches "`Alpha`" or "`Alpho`" or "`Alphe`". "`Alph[123]`" matches "`Alph1`", "`Alph2`", or "`Alph3`". This also works using "`-`" to show a range. "`Alph[a-z]`" allows any letter between "`a`" and "`z`" to follow the phrase "`Alph`". "`Alph[0-9]`" allows any number between "`0`" and "`9`" to follow the phrase "`Alph`". 
+"`\W`" | Matches all symbols. "`\W`" matches "`$`", "`%`", "`#`", etc. "`\W\W`" matches "`#%`", "`&!`", etc.
+"`\w`" | Matches all alphanumeric characters. "`\w`" matches "`B`", "`e`", "`4`", etc. "`\w\w\w`" matches "`bE1`", "`8Tn`", "`09s`", etc.
+"`\d`" | Matches all whole numbers. "`\d`" matches "`1`", "`5`", "`0`", etc. "`\d\d\d\d`" matches "`1234`", "`8173`", "`0000`", etc. 
+
+These can all be combined. For example, "`Tr.*`" matches "`Tr`", "`Tree`", "`Triumph`", "`Tragedy`", etc.
+
 
 ## Character Classes
 
