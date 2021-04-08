@@ -93,6 +93,22 @@ Here, we had to use an escape to identify the "`[`" and the "`.`", as they are o
 
 ## Meta Characters
 
+Meta characters are the building blocks of regular expressions, as they allow for the regular expression to be written more concisely, specify character types, use ranges, and either specify or generalize what a regular expression is looking for. Below are examples of the commonly used meta characters.
+
+Character        |    Description
+---------------- | ----------------------
+`*`	| Matches the preceding character 0 or more times. "`Be*`" matches "`B`", "`Be`", "`Bee`", "`Beee`", etc.
+`+` | Matches the preceding character 1 or more times. "`Ze+`" matches "`Ze`", "`Zee`", "`Zeee`", etc.
+`.` | Matches any alphanumeric or symbol. "`Da.`" matches "`Dab`", "`Da9`", "`Da@`", etc.
+`?` | Matches the preceding character 1 or 0 times. "`To?n`" matches "`Ton`" or "`Tn`". 
+`(...)` | Matches the characters or numbers in the exact order. "`Form(ula)`" matches "`Formula`" but not "`Formlau`". "`Form(123)`" matches "`Form123`" but not "`Form456`". 
+`[...]` | Matches one of the characters or numbers. "`Alph[aeo]`" matches "`Alpha`" or "`Alpho`" or "`Alphe`". "`Alph[123]`" matches "`Alph1`", "`Alph2`", or "`Alph3`". This also works using "`-`" to show a range. "`Alph[a-z]`" allows any letter between "`a`" and "`z`" to follow the phrase "`Alph`". "`Alph[0-9]`" allows any number between "`0`" and "`9`" to follow the phrase "`Alph`". 
+"`\W`" | Matches all symbols. "`\W`" matches "`$`", "`%`", "`#`", etc. "`\W\W`" matches "`#%`", "`&!`", etc.
+"`\w`" | Matches all alphanumeric characters. "`\w`" matches "`B`", "`e`", "`4`", etc. "`\w\w\w`" matches "`bE1`", "`8Tn`", "`09s`", etc.
+"`\d`" | Matches all whole numbers. "`\d`" matches "`1`", "`5`", "`0`", etc. "`\d\d\d\d`" matches "`1234`", "`8173`", "`0000`", etc. 
+
+These can all be combined. For example, "`Tr.*`" matches "`Tr`", "`Tree`", "`Triumph`", "`Tragedy`", etc.
+
 
 ## Character Classes
 

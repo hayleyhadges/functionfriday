@@ -452,6 +452,58 @@ str_detect(x, &quot;wt\\[x&quot;)</code></pre>
 </div>
 <div id="meta-characters" class="section level2">
 <h2>Meta Characters</h2>
+<p>Meta characters are the building blocks of regular expressions, as they allow for the regular expression to be written more concisely, specify character types, use ranges, and either specify or generalize what a regular expression is looking for. Below are examples of the commonly used meta characters.</p>
+<table>
+<colgroup>
+<col width="42%"></col>
+<col width="57%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>Character</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>*</code></td>
+<td>Matches the preceding character 0 or more times. “<code>Be*</code>” matches “<code>B</code>”, “<code>Be</code>”, “<code>Bee</code>”, “<code>Beee</code>”, etc.</td>
+</tr>
+<tr class="even">
+<td><code>+</code></td>
+<td>Matches the preceding character 1 or more times. “<code>Ze+</code>” matches “<code>Ze</code>”, “<code>Zee</code>”, “<code>Zeee</code>”, etc.</td>
+</tr>
+<tr class="odd">
+<td><code>.</code></td>
+<td>Matches any alphanumeric or symbol. “<code>Da.</code>” matches “<code>Dab</code>”, “<code>Da9</code>”, “<code>Da@</code>”, etc.</td>
+</tr>
+<tr class="even">
+<td><code>?</code></td>
+<td>Matches the preceding character 1 or 0 times. “<code>To?n</code>” matches “<code>Ton</code>” or “<code>Tn</code>”.</td>
+</tr>
+<tr class="odd">
+<td><code>(...)</code></td>
+<td>Matches the characters or numbers in the exact order. “<code>Form(ula)</code>” matches “<code>Formula</code>” but not “<code>Formlau</code>”. “<code>Form(123)</code>” matches “<code>Form123</code>” but not “<code>Form456</code>”.</td>
+</tr>
+<tr class="even">
+<td><code>[...]</code></td>
+<td>Matches one of the characters or numbers. “<code>Alph[aeo]</code>” matches “<code>Alpha</code>” or “<code>Alpho</code>” or “<code>Alphe</code>”. “<code>Alph[123]</code>” matches “<code>Alph1</code>”, “<code>Alph2</code>”, or “<code>Alph3</code>”. This also works using “<code>-</code>” to show a range. “<code>Alph[a-z]</code>” allows any letter between “<code>a</code>” and “<code>z</code>” to follow the phrase “<code>Alph</code>”. “<code>Alph[0-9]</code>” allows any number between “<code>0</code>” and “<code>9</code>” to follow the phrase “<code>Alph</code>”.</td>
+</tr>
+<tr class="odd">
+<td>“<code>\W</code>”</td>
+<td>Matches all symbols. “<code>\W</code>” matches “<code>$</code>”, “<code>%</code>”, “<code>#</code>”, etc. “<code>\W\W</code>” matches “<code>#%</code>”, “<code>&amp;!</code>”, etc.</td>
+</tr>
+<tr class="even">
+<td>“<code>\w</code>”</td>
+<td>Matches all alphanumeric characters. “<code>\w</code>” matches “<code>B</code>”, “<code>e</code>”, “<code>4</code>”, etc. “<code>\w\w\w</code>” matches “<code>bE1</code>”, “<code>8Tn</code>”, “<code>09s</code>”, etc.</td>
+</tr>
+<tr class="odd">
+<td>“<code>\d</code>”</td>
+<td>Matches all whole numbers. “<code>\d</code>” matches “<code>1</code>”, “<code>5</code>”, “<code>0</code>”, etc. “<code>\d\d\d\d</code>” matches “<code>1234</code>”, “<code>8173</code>”, “<code>0000</code>”, etc.</td>
+</tr>
+</tbody>
+</table>
+<p>These can all be combined. For example, “<code>Tr.*</code>” matches “<code>Tr</code>”, “<code>Tree</code>”, “<code>Triumph</code>”, “<code>Tragedy</code>”, etc.</p>
 </div>
 <div id="character-classes" class="section level2">
 <h2>Character Classes</h2>
