@@ -15,7 +15,6 @@ Here are some real world regular expression applications:
 
 * Searching files in a directory using the command line
 * Checking for valid formatting (email address, phone number, date, etc)
-* Control F 
 * Parsing user input
 * Replacing specific text
 * Password pattern matching
@@ -25,7 +24,6 @@ Here are some real world regular expression applications:
 
 Here is a [RegEx Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf) with a lot of this information condensed.
 
-
 # Stringr Functions
 
 While there are other popular R functions used for dealing with regular expressions, like `grep()`, `regexpr()`, and `gsub()`, we're going to focus on the functions in the `stringr` package. 
@@ -33,47 +31,50 @@ While there are other popular R functions used for dealing with regular expressi
 Function    |    Description
 ---------------- | ----------------------
 `str_detect(string, pattern)`	| Detect the presence or absence of a pattern in a string, returns T/F.
-`str_locate(string, pattern)`	| Locate the first position of a pattern and return a matrix with start and end.
-`str_extract(string, pattern)` |	Extracts text corresponding to the first match, returns a vector.
-`str_match(string, pattern)`	| Extracts capture groups formed by () from the first match.
+*`str_locate(string, pattern)`	| Locate the first position of a pattern and return a matrix with start and end.
+*`str_extract(string, pattern)` |	Extracts text corresponding to the first match, returns a vector.
+*`str_match(string, pattern)`	| Extracts capture groups formed by () from the first match.
 `str_split(string, pattern)` |	Splits string into pieces and returns a list of character vectors.
-`str_replace(string, pattern, replacement)`	 | Replaces the first matched pattern and returns a character vector.
+*`str_replace(string, pattern, replacement)`	 | Replaces the first matched pattern and returns a character vector.
+
+Functions in the table with a `*` also have a `str_---_all()` variant that will match more than one occurrence of the pattern in a given string.
 
 # Basic Function Examples
 
 #### **str_detect**
 ```{r}
-month <- c("april", "April", "APRIL")
-str_detect(month, "April")
-
 months  <- c("March", "April", "May", "June", "July", "August")
 str_detect(months, "a")
 ```
 
 #### **str_locate()**
 ```{r}
+locations <- c("St Paul, MN, 55105", 
+               "Minneapolis, Minnesota, 55404", 
+               "Roseville, MN, 55113")
 
+str_locate(locations, "MN")
 ```
 
 #### **str_extract**
 ```{r}
-x <- c("apple", "banana", "pear")
-str_extract(x, "an")
+fruits <- c("apple", "banana", "pear")
+str_extract(fruits, "an")
 ```
 
 #### **str_match()**
 ```{r}
-
+str_match(locations, "MN")
 ```
 
 #### **str_split()**
 ```{r}
-
+str_split(locations, ",")
 ```
 
 #### **str_replace()**
 ```{r}
-
+str_replace(locations, "MN", "Minnesota")
 ```
 
 
@@ -116,7 +117,7 @@ These can all be combined. For example, "`Tr.*`" matches "`Tr`", "`Tree`", "`Tri
 
 ## Anchors
 
-As the default, regular expressions will match any part of a string. Anchors, on the other hand, do not match any character at all. Instead can anchor matches from the start or end of the given string.
+As the default, regular expressions will match any part of a string. Anchors, on the other hand, do not match any character at all. Instead, they match a position before or after given characters.
 
 
 `^` matches the start of the string.
@@ -125,14 +126,12 @@ As the default, regular expressions will match any part of a string. Anchors, on
 
 
 ```{r}
-x <- c("apple", "banana", "pear")
+x <- c("apple", "banana", "pear", "apricot")
 str_extract(x, "^a")
+str_extract(x, "a$")
 
 x <- c("apple pie", "apple", "apple cake")
 str_extract(x, "apple$")
-
-text = "the quick brown fox jumps over the lazy dog"
-str_replace(text,"^the","---")
 ```
 
 
