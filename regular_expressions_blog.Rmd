@@ -192,14 +192,14 @@ bestsellers %>%
 (@) Find books with multiple authors (HINT: Consider the possibility of an author having “and” in their name)
 
 ```{r, eval=FALSE}
-str_???(bestsellers %>% pull(???), “???“)
+str_???(bestsellers %>% pull(???), "???")
 ```
 
 
 (@) Detect if the author’s first name starts with a vowel
 
 ```{r, eval=FALSE}
-str_???(bestsellers %>% pull(author), “???”)
+str_???(bestsellers %>% pull(author), "???")
 ```
 
 
@@ -209,20 +209,29 @@ str_???(bestsellers %>% pull(author), “???”)
 str_???_???(???, "Alexander", "Alex")
 ```
 
-
-(@) Detect if the book is the second book in a series
-
-```{r, eval=FALSE}
-str_???(bestsellers %>% pull(???), pattern = “???”)
-```
-
-
-(@) Detect if the book is the third or fourth book in a series
+(@) Find books that are the second book in a series
 
 ```{r, eval=FALSE}
-str_???(bestsellers %>% pull(???), pattern = “???”)
+bestsellers %>%
+  mutate(series = str_???(bestsellers %>% pull(???), pattern = "???")) %>%
+  filter(series == TRUE)
 ```
 
+(@) Find books that are the third or fourth one in a series
+
+```{r, eval=FALSE}
+bestsellers %>%
+  mutate(series = str_???(bestsellers %>% pull(???), pattern = "???")) %>%
+  filter(series == TRUE)
+```
+
+(@) Find books that are the 10th, 11th, ..., or 19th book in a series
+
+```{r, eval=FALSE}
+bestsellers %>%
+  mutate(series = str_???(bestsellers %>% pull(???), pattern = "???")) %>%
+  filter(series == TRUE)
+```
 
 (@) Describe in your own words how you would go about writing a regular expression for password pattern matching (ie 8 character minimum, one capital letter minimum, one lowercase letter minimum, one digit minimum, one special character minimum). This is an open ended question.
 
