@@ -177,3 +177,49 @@ Here, we had to use an escape to identify the "`[`" and the "`.`", as they are o
 
 
 # Problem Set
+
+(@) Find books with multiple authors (HINT: Consider the possibility of an author having “and” in their name)
+
+```{r, eval=FALSE}
+str_???(bestsellers %>% pull(???), “???“)
+```
+
+
+(@) Detect if the author’s first name starts with a vowel
+
+```{r, eval=FALSE}
+str_???(bestsellers %>% pull(author), “???”)
+```
+
+
+(@) Change all authors with the name Alexander to Alex
+
+```{r, eval=FALSE}
+str_???_???(???, "Alexander", "Alex")
+```
+
+
+(@) Detect if the book is the second book in a series
+
+```{r, eval=FALSE}
+str_???(bestsellers %>% pull(???), pattern = “???”)
+```
+
+
+(@) Detect if the book is the third or fourth book in a series
+
+```{r, eval=FALSE}
+str_???(bestsellers %>% pull(???), pattern = “???”)
+```
+
+
+(@) Describe in your own words how you would go about writing a regular expression for password pattern matching (ie 8 character minimum, one capital letter minimum, one lowercase letter minimum, one digit minimum, one special character minimum). This is an open ended question.
+Find the stringr cheatsheet [here](https://www.rstudio.com/resources/cheatsheets/):
+
+
+
+
+
+
+
+
