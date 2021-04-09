@@ -97,7 +97,7 @@ These can all be combined. For example, "`Tr.*`" matches "`Tr`", "`Tree`", "`Tri
 
 ## Character Classes
 
-A character class is a set of characters enclosed in the square brackets []. A match is found when a character in the set is detected in the input. Some common character classes are:
+A character class is a set of characters enclosed in the square brackets `[ ]`. A match is found when a character in the set is detected in the input. Some common character classes are:
 
 Characters        |    Description
 ----------------- | ----------------------
