@@ -178,6 +178,13 @@ Here, we had to use an escape to identify the "`[`" and the "`.`", as they are o
 
 # Problem Set
 
+The dataset we will be using contains information on all New York Times bestselling hardcover fictions from 2009 through 2020. Please download the data using this [link](https://drive.google.com/file/d/12oqEt11miNGL_MtIcU75jx84pz6VEq_w/view?usp=sharing) and put it inside your working directory.
+
+```{r, eval=FALSE}
+bestsellers <- read.csv("bestsellers.csv") # the filepath to the downloaded data
+```
+
+
 (@) Find books with multiple authors (HINT: Consider the possibility of an author having “and” in their name)
 
 ```{r, eval=FALSE}
@@ -214,7 +221,6 @@ str_???(bestsellers %>% pull(???), pattern = “???”)
 
 
 (@) Describe in your own words how you would go about writing a regular expression for password pattern matching (ie 8 character minimum, one capital letter minimum, one lowercase letter minimum, one digit minimum, one special character minimum). This is an open ended question.
-Find the stringr cheatsheet [here](https://www.rstudio.com/resources/cheatsheets/):
 
 
 

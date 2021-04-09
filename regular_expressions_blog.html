@@ -685,6 +685,8 @@ str_detect(x, &quot;wt\\[x&quot;)</code></pre>
 </div>
 <div id="problem-set" class="section level1">
 <h1>Problem Set</h1>
+<p>The dataset we will be using contains information on all New York Times bestselling hardcover fictions from 2009 through 2020. Please download the data using this <a href="https://drive.google.com/file/d/12oqEt11miNGL_MtIcU75jx84pz6VEq_w/view?usp=sharing">link</a> and put it inside your working directory.</p>
+<pre class="r"><code>bestsellers &lt;- read.csv(&quot;bestsellers.csv&quot;) # the filepath to the downloaded data</code></pre>
 <ol class="example" style="list-style-type: decimal">
 <li>Find books with multiple authors (HINT: Consider the possibility of an author having “and” in their name)</li>
 </ol>
@@ -706,7 +708,7 @@ str_detect(x, &quot;wt\\[x&quot;)</code></pre>
 </ol>
 <pre class="r"><code>str_???(bestsellers %&gt;% pull(???), pattern = “???”)</code></pre>
 <ol start="6" class="example" style="list-style-type: decimal">
-<li>Describe in your own words how you would go about writing a regular expression for password pattern matching (ie 8 character minimum, one capital letter minimum, one lowercase letter minimum, one digit minimum, one special character minimum). This is an open ended question. Find the stringr cheatsheet <a href="https://www.rstudio.com/resources/cheatsheets/">here</a>:</li>
+<li>Describe in your own words how you would go about writing a regular expression for password pattern matching (ie 8 character minimum, one capital letter minimum, one lowercase letter minimum, one digit minimum, one special character minimum). This is an open ended question.</li>
 </ol>
 </div>
 
