@@ -686,7 +686,11 @@ str_detect(x, &quot;wt\\[x&quot;)</code></pre>
 <div id="problem-set" class="section level1">
 <h1>Problem Set</h1>
 <p>The dataset we will be using contains information on all New York Times bestselling hardcover fictions from 2009 through 2020. Please download the data using this <a href="https://drive.google.com/file/d/12oqEt11miNGL_MtIcU75jx84pz6VEq_w/view?usp=sharing">link</a> and put it inside your working directory.</p>
-<pre class="r"><code>bestsellers &lt;- read.csv(&quot;bestsellers.csv&quot;) # the filepath to the downloaded data</code></pre>
+<pre class="r"><code># read in the data
+bestsellers &lt;- read.csv(&quot;bestsellers.csv&quot;) # the filepath to the downloaded data
+
+bestsellers %&gt;%
+  head(10)</code></pre>
 <ol class="example" style="list-style-type: decimal">
 <li>Find books with multiple authors (HINT: Consider the possibility of an author having “and” in their name)</li>
 </ol>

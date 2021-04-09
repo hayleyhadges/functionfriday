@@ -181,7 +181,11 @@ Here, we had to use an escape to identify the "`[`" and the "`.`", as they are o
 The dataset we will be using contains information on all New York Times bestselling hardcover fictions from 2009 through 2020. Please download the data using this [link](https://drive.google.com/file/d/12oqEt11miNGL_MtIcU75jx84pz6VEq_w/view?usp=sharing) and put it inside your working directory.
 
 ```{r, eval=FALSE}
+# read in the data
 bestsellers <- read.csv("bestsellers.csv") # the filepath to the downloaded data
+
+bestsellers %>%
+  head(10)
 ```
 
 
